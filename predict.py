@@ -1,6 +1,6 @@
 from ultralytics import YOLO
 
-model = YOLO('yolov11_custom.pt')
+model = YOLO('yolov26_custom.pt')
 
 model.predict(source='D:/2026/Developing/ml_projects/object-detection-yollo11/test/1.png',
                show=False,
@@ -44,4 +44,4 @@ model.predict(source='D:/2026/Developing/ml_projects/object-detection-yollo11/te
 # model.export(format='saved_model', imgsz=640, device=0)
 
 # instead of writing the code to predict on a single image, you can also use the command line interface (CLI) to run predictions on a folder of images or a video file. For example, you can run the following command in the terminal:
-# yolo predict model=yolov11_custom.pt source=1.jpg 
+# yolo predict model=yolov26_custom.pt source=1.jpg 

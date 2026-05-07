@@ -1,6 +1,6 @@
-# Simple Traffic Light Detection using YOLO11
+# Simple Traffic Light Detection using YOLO26
 
-This is a simple sample project created to try and learn YOLO11 object detection using custom traffic-light data.
+This is a simple sample project created to try and learn YOLO26 object detection using custom traffic-light data.
 
 The project detects:
 
@@ -12,14 +12,14 @@ on:
 - Images
 - Videos
 
-using a custom-trained YOLO11 model.
+using a custom-trained YOLO26 model.
 
 ---
 
 # Project Structure
 
 ```text
-object-detection-yollo11/
+object-detection-yollo26/
 │
 ├── runs/
 ├── test/
@@ -31,7 +31,7 @@ object-detection-yollo11/
 ├── train.py
 │
 ├── yolo26n.pt
-├── yolov11_custom.pt
+├── yolov26_custom.pt
 ```
 
 ---
@@ -40,12 +40,15 @@ object-detection-yollo11/
 
 - Python
 - PyTorch
-- Ultralytics YOLO11
+- Ultralytics YOLO26
 - OpenCV
 
 ---
 
 # Dataset
+
+Dataset used: (I used small group of images)
+https://www.kaggle.com/datasets/amlyasser/generated-traffic-light?resource=download
 
 Custom traffic-light dataset containing:
 
@@ -58,6 +61,12 @@ Classes:
 0 → greenlight
 1 → redlight
 ```
+
+---
+
+# Annotation Tool
+
+The dataset annotations were created using Label Studio for object detection bounding-box labeling of traffic lights.
 
 ---
 
@@ -81,6 +90,40 @@ model.train(
     workers=0
 )
 ```
+
+---
+
+# Training Results
+
+Model evaluation results on the validation dataset:
+
+| Class      | Precision | Recall | mAP50 | mAP50-95 |
+| ---------- | --------- | ------ | ----- | -------- |
+| greenlight | 1.000     | 0.976  | 0.995 | 0.868    |
+| redlight   | 1.000     | 0.660  | 0.935 | 0.688    |
+| ALL        | 1.000     | 0.818  | 0.965 | 0.778    |
+
+---
+
+# Validation Metrics
+
+- Overall mAP50: **0.965**
+- Overall mAP50-95: **0.778**
+- Detection model: **YOLO26n**
+- Training device: **NVIDIA GeForce MX130**
+- Epochs: **100**
+
+---
+
+# Notes About Results
+
+- The model achieved strong object detection performance on traffic-light images.
+- Green traffic lights achieved higher recall performance than red traffic lights.
+- Results can improve further with:
+  - larger datasets
+  - additional training images
+  - more data augmentation
+  - GPU training on newer hardware
 
 ---
 
@@ -109,7 +152,7 @@ model.predict(
 The trained model file:
 
 ```text
-yolov11_custom.pt
+yolov26_custom.pt
 ```
 
 ---
@@ -148,13 +191,17 @@ yolov11_custom.pt
 
 ## Video Example 1
 
-https://github.com/user-attachments/assets/1.mp4
+https://github.com/Asmaathabet/Traffic-Light-Detection/issues/1
+
+![YOLO26 Demo](runs/detect/predict/traffic-lights-v1.gif)
 
 ---
 
 ## Video Example 2
 
-https://github.com/user-attachments/assets/2.mp4
+https://github.com/Asmaathabet/Traffic-Light-Detection/issues/2
+
+![YOLO26 Demo](runs/detect/predict/traffic-lights-v2.gif)
 
 ---
 
@@ -176,7 +223,7 @@ pip install ultralytics opencv-python
 
 # Notes
 
-- This project is a simple practice/sample project for learning YOLO11.
+- This project is a simple practice/sample project for learning YOLO26.
 - The model was trained on a small custom dataset.
 - Results may improve with a larger dataset and longer training.
 
